@@ -18,6 +18,12 @@ namespace Phys2D
             return (actDistX <= minDistX) && (actDistY <= minDistY);
         }
 
+        public static bool SpaceOverlapping(Entity a, ForceZone b)
+        {
+            return (a.GetCenterX() > b.m_topLeft.X && a.GetCenterX() < (b.m_topLeft.X + b.m_width))
+                && (a.GetCenterY() > b.m_topLeft.Y && a.GetCenterY() < (b.m_topLeft.Y + b.m_height));
+        }
+
         public static bool EntitiesWithinDistance(ref Entity a, ref Entity b, double distance)
         {
             return Vector2.Distance(a.GetCenter(), b.GetCenter()) <= distance;

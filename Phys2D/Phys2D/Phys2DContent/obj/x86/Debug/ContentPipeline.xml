@@ -7,8 +7,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\johnogorman\Desktop\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\cube.xnb</Output>
-      <Time>2014-06-27T11:03:32.9846865+01:00</Time>
+      <Output>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\cube.xnb</Output>
+      <Time>2014-07-07T14:28:20.8178496+01:00</Time>
+    </Item>
+    <Item>
+      <Source>zone_def.png</Source>
+      <Name>zone_def</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\zone_def.xnb</Output>
+      <Time>2014-07-09T17:23:52.2896684+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -16,10 +25,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\johnogorman\Desktop\Phys2D\Phys2D\Phys2DContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\johnogorman\Desktop\Phys2D\Phys2D\Phys2D\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\johnogorman\Desktop\Phys2D\Phys2D\Phys2DContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\johnogorman\Desktop\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2DContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2DContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
