@@ -60,8 +60,12 @@ namespace Phys2D
             oldState = new KeyboardState();
 
             m_zoneMgr = ZoneManager.GetInstance();
-            m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 3.0f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
-            m_zoneMgr.m_zones.ElementAt(0).AddForce(new Force("Wind", new Vector2(0.0f, -25.0f)));
+            m_zoneMgr.AddZone(new ForceZone(new Vector2(0.0f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
+            m_zoneMgr.m_zones.ElementAt(0).AddForce(new Force("Wind", new Vector2(0.0f, -19.0f)));
+            m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 2.9f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
+            m_zoneMgr.m_zones.ElementAt(1).AddForce(new Force("Wind", new Vector2(0.0f, -15.0f)));
+            m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 1.45f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
+            m_zoneMgr.m_zones.ElementAt(2).AddForce(new Force("Wind", new Vector2(0.0f, -19.0f)));
 
             m_manager = EntityManager.GetInitInstance(ref tex);
             m_manager.floorY = (double)graphics.PreferredBackBufferHeight;

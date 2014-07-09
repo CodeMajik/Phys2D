@@ -7,8 +7,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\cube.xnb</Output>
-      <Time>2014-06-27T11:03:34+01:00</Time>
+      <Output>C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\cube.xnb</Output>
+      <Time>2014-07-09T23:11:40.5255061+01:00</Time>
+    </Item>
+    <Item>
+      <Source>zone_def.png</Source>
+      <Name>zone_def</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\zone_def.xnb</Output>
+      <Time>2014-07-09T23:12:46.9420291+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -17,10 +26,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2DContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2DContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
