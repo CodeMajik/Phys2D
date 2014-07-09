@@ -12,11 +12,3 @@ C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.csprojResolveAsse
 C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.exe
 C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.pdb
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\cube.xnb
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Phys2D.exe
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Phys2D.pdb
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.csprojResolveAssemblyReference.cache
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.exe
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.pdb
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\zone_def.xnb

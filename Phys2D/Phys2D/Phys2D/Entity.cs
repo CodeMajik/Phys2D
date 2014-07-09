@@ -22,11 +22,9 @@ namespace Phys2D
         public Vector2 m_angular_velocity;
         public Vector2 m_angular_momentum;
         public Vector2 m_orientation;
-        public Vector2 m_force, m_zoneForces;
+        public Vector2 m_force;
         public List<Vector2> m_vertexPoints;
         public Texture2D m_texture;
-        public long m_id;
-        public bool m_bPlayerControlled;
         public double m_width, m_height, m_mass, m_coefRestitution, m_coefFriction;
 
         public Entity()
@@ -36,14 +34,12 @@ namespace Phys2D
 
         public Entity(Vector2 pos, Vector2 vel)
         {
-            m_bPlayerControlled = false;
             m_position= pos;
             m_velocity = vel;
             m_angular_velocity = Vector2.Zero;
             m_angular_momentum = Vector2.Zero;
             m_orientation = Vector2.Zero;
             m_force = Vector2.Zero;
-            m_zoneForces = Vector2.Zero;
             m_vertexPoints = new List<Vector2>(0);
             m_width = 0;
             m_coefRestitution = 1.0;//1.0 for full bounce
@@ -52,7 +48,6 @@ namespace Phys2D
             Random rand = new Random();
             m_mass = rand.Next(60, 100);
             m_texture = null;
-            m_id = IDManager.GenerateNewID();
         }
 
         public void LoadTexture(ref ContentManager content)
@@ -72,7 +67,6 @@ namespace Phys2D
 
         public void DefaultInitialize()
         {
-            m_bPlayerControlled = false;
             m_texture = new Texture2D(null, 0, 0);
             m_position = Vector2.Zero;
             m_velocity = Vector2.Zero;
@@ -80,7 +74,6 @@ namespace Phys2D
             m_angular_momentum = Vector2.Zero;
             m_orientation = Vector2.Zero;
             m_force = Vector2.Zero;
-            m_zoneForces = Vector2.Zero;
             m_width = 0;
             m_coefRestitution = 1.0;
             m_coefFriction = 1.0;
@@ -88,7 +81,6 @@ namespace Phys2D
             Random rand = new Random();
             m_mass = rand.Next(60, 100);
             m_vertexPoints = new List<Vector2>(0);
-            m_id = IDManager.GenerateNewID();
         }
 
         public void GenerateVertexes()

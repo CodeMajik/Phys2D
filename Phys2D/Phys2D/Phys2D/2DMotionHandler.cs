@@ -31,9 +31,7 @@ namespace Phys2D
         public void CalculateEulerMotion(double dt, Entity entity)
         {
             delta = (float)(dt / 1000.0);
-            Vector2 accel = (entity.m_force+entity.m_zoneForces)*(float)entity.m_mass;
-            entity.m_zoneForces = Vector2.Zero;
-
+            Vector2 accel = entity.m_force*(float)entity.m_mass;
             Vector2 vel = entity.m_velocity;
             accel /= (float)entity.m_mass;
             vel += (accel*delta);// new Vector2(vel.X + (accel.X * delta), vel.Y + (accel.Y * delta));

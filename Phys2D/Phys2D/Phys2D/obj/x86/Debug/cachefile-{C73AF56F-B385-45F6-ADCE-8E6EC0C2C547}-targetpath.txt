@@ -1,2 +1,1 @@
 Content\cube.xnb
-Content\zone_def.xnb

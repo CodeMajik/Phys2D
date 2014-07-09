@@ -1,3 +1,2 @@
 C:\Users\johnogorman\Desktop\Phys2D\Phys2D\Phys2DContent\obj\x86\Debug\Phys2DContent.contentprojResolveAssemblyReference.cache
 C:\Users\Jim\Desktop\Phys2D\Phys2D\Phys2DContent\obj\x86\Debug\Phys2DContent.contentprojResolveAssemblyReference.cache
-C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2DContent\obj\x86\Debug\Phys2DContent.contentprojResolveAssemblyReference.cache

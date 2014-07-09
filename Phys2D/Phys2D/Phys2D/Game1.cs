@@ -20,8 +20,6 @@ namespace Phys2D
         SpriteBatch spriteBatch;
         EntityManager m_manager;
         ControllableEntity m_player;
-        KeyboardState oldState, newState;
-        ZoneManager m_zoneMgr;
 
         public Game1()
         {
@@ -42,11 +40,6 @@ namespace Phys2D
             base.Initialize();
         }
 
-        public bool KeyReleased(Keys key)
-        {
-            return oldState.IsKeyDown(key)&&!newState.IsKeyDown(key);
-        }
-
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -56,12 +49,6 @@ namespace Phys2D
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Texture2D tex = Content.Load<Texture2D>("cube");
-
-            oldState = new KeyboardState();
-
-            m_zoneMgr = ZoneManager.GetInstance();
-            m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 3.0f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
-            m_zoneMgr.m_zones.ElementAt(0).AddForce(new Force("Wind", new Vector2(0.0f, -25.0f)));
 
             m_manager = EntityManager.GetInitInstance(ref tex);
             m_manager.floorY = (double)graphics.PreferredBackBufferHeight;
@@ -92,34 +79,31 @@ namespace Phys2D
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            newState = Keyboard.GetState();
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            if (KeyReleased(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            if (KeyReleased(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
                 m_player.m_impulseForce.Y = -10.0f;
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                if (m_player.m_impulseForce.X < 3.0f)
-                    m_player.m_impulseForce.X += 0.08f;
+                m_player.m_impulseForce.X = 1.0f;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                if (m_player.m_impulseForce.X > -3.0f)
-                    m_player.m_impulseForce.X = -0.08f;
+                m_player.m_impulseForce.X = -1.0f;
             }
 
-            m_zoneMgr.Update();
             m_player.Update(gameTime);
           //  m_manager.Update(ref gameTime);
             // TODO: Add your update logic here
 
-            oldState = newState;
             base.Update(gameTime);
         }
 
@@ -140,8 +124,7 @@ namespace Phys2D
             rect.Y = (int)m_player.m_entity.m_position.Y;
             rect.Width = width;
             rect.Height = height;
-            spriteBatch.Draw(m_player.m_entity.m_texture, rect, Color.White);
-            m_zoneMgr.Draw(ref spriteBatch);
+            spriteBatch.Draw(m_player.m_entity.m_texture, rect, Color.White); 
             spriteBatch.End();
             // TODO: Add your drawing code here
            

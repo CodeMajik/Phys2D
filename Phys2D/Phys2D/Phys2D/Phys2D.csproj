@@ -115,14 +115,11 @@
     <Compile Include="ControllableEntity.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityManager.cs" />
-    <Compile Include="ForceZone.cs" />
-    <Compile Include="IDManager.cs" />
     <Compile Include="Physics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="WorldForces.cs" />
-    <Compile Include="ZoneManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
