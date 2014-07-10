@@ -50,14 +50,28 @@ namespace Phys2D
         {
             m_defCubetexture = texture;
             Initialize();
-            Vector2 pos, vel;
-            pos = new Vector2(100.0f, 300.0f);
-            vel = new Vector2(4.5f, -2.0f);
-            AddEntity(new Entity(pos, vel));
+            
+        }
 
-            pos = new Vector2(500.0f, 300.0f);
-            vel = new Vector2(-4.5f, -2.0f);
-            AddEntity(new Entity(pos, vel));
+        public void Populate()
+        {
+            Vector2 pos, vel;
+            Random rand = new Random();
+            double[] xArray = new double[10];
+            double[] yArray = new double[10];
+
+            for (int i = 0; i < 10; ++i)
+            {
+                xArray[i] = rand.Next((int)screenLeft + 100, (int)screenRight - 100);
+                yArray[i] = rand.Next((int)0.0 + 100, (int)floorY - 100);
+            }
+
+            for (int i = 0; i < 10; ++i)
+            {
+                pos = new Vector2((float)xArray[i], (float)yArray[i]);
+                vel = new Vector2(-4.5f, -2.0f);
+                AddEntity(new Entity(pos, vel));
+            }
         }
 
         public void Initialize()
@@ -70,47 +84,57 @@ namespace Phys2D
         public void AddEntity(Entity e)
         {
             e.SetTexture(ref m_defCubetexture);
-            //e.m_texture = m_defCubetexture;
-
+            e.m_force.Y = WorldForces.Gravity.Y;
             m_entities.Add(e);
-            
         }
 
         public void Update(ref GameTime gameTime)
         {
             foreach(Entity entity in m_entities)
             {
-                entity.Update(ref gameTime);
-                if (entity.GetBotY() > floorY)
+                if (!entity.m_bPlayerControlled)
                 {
-                    entity.m_position.Y = (float)floorY - (float)entity.m_height;
-                    entity.m_velocity = Physics.CalculateReboundForce(entity, new Vector2(0.0f, 1.0f));
-                    entity.m_velocity *= (float)entity.m_coefFriction;
+                    entity.Update(ref gameTime);
+                    entity.m_velocity += entity.m_impulseForce;
+                    entity.m_impulseForce = Vector2.Zero;
+                    if (entity.GetWCSBotY() > floorY)
+                    {
+                        entity.m_position.Y = (float)floorY - (float)entity.m_height;
+                        entity.m_velocity = Physics.CalculateReboundForce(entity, new Vector2(0.0f, 1.0f));
+                       // entity.m_velocity *= (float)entity.m_coefFriction;
+                    }
+                    if (entity.GetWCSTopY() < 0.0)
+                    {
+                        entity.m_position.Y = 0.0f;
+                        entity.m_velocity = Physics.CalculateReboundForce(entity, new Vector2(0.0f, -1.0f));
+                    }
+
+                    if (entity.GetWCSLeftX() < screenLeft)
+                    {
+                        entity.m_position.X = (float)screenLeft;
+                        entity.m_velocity = Physics.CalculateReboundForce(entity, new Vector2(1.0f, 0.0f));
+                    }
+                    else if (entity.GetWCSRightX() > screenRight)
+                    {
+                        entity.m_position.X = (float)screenRight - (float)entity.m_width;
+                        entity.m_velocity = Physics.CalculateReboundForce(entity, new Vector2(-1.0f, 0.0f));
+                    }
+
+                    m_motionHandler.CalculateEulerMotion(gameTime.ElapsedGameTime.Milliseconds, entity);
                 }
-
-                if (entity.GetLeftX() < screenLeft)
-                    entity.m_velocity = Physics.CalculateReboundForce(entity, new Vector2(1.0f, 0.0f));
-                else if (entity.GetRightX() > screenRight)
-                    entity.m_velocity = Physics.CalculateReboundForce(entity, new Vector2(-1.0f, 0.0f));
-
-                m_motionHandler.CalculateEulerMotion(gameTime.ElapsedGameTime.Milliseconds, entity);
             }
-            m_collisionHandler.HandleAllCollisions(ref m_entities);
+           // m_collisionHandler.HandleAllCollisions(ref m_entities);
         }
 
         public void Draw(ref SpriteBatch sb)
         {
-            Rectangle rect = new Rectangle();
-            int width, height;
             foreach (Entity entity in m_entities)
             {
-                width = m_defCubetexture.Width;
-                height = m_defCubetexture.Height;
-                rect.X = (int)entity.m_position.X;
-                rect.Y = (int)entity.m_position.Y;
-                rect.Width = width;
-                rect.Height = height;
-                sb.Draw(m_defCubetexture, rect, Color.White); 
+                if (!entity.m_bPlayerControlled)
+                {
+                    sb.Draw(entity.m_texture, entity.GetWCSCenter(), null, Color.White, entity.m_angular_momentum.Length(),
+                        new Vector2((float)entity.GetCenterX(), (float)entity.GetCenterY()), 1.0f, SpriteEffects.None, 0f);
+                }
             }
         }
     }

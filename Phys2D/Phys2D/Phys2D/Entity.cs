@@ -22,6 +22,7 @@ namespace Phys2D
         public Vector2 m_angular_velocity;
         public Vector2 m_angular_momentum;
         public Vector2 m_orientation;
+        public Vector2 m_impulseForce;
         public Vector2 m_force, m_zoneForces;
         public List<Vector2> m_vertexPoints;
         public Texture2D m_texture;
@@ -46,7 +47,7 @@ namespace Phys2D
             m_zoneForces = Vector2.Zero;
             m_vertexPoints = new List<Vector2>(0);
             m_width = 0;
-            m_coefRestitution = 1.0;//1.0 for full bounce
+            m_coefRestitution = 0.8;//1.0 for full bounce
             m_coefFriction = 1.0;//lower for higher froction
             m_height = 0;
             Random rand = new Random();
@@ -82,7 +83,7 @@ namespace Phys2D
             m_force = Vector2.Zero;
             m_zoneForces = Vector2.Zero;
             m_width = 0;
-            m_coefRestitution = 1.0;
+            m_coefRestitution = 0.8;
             m_coefFriction = 1.0;
             m_height = 0;
             Random rand = new Random();
@@ -119,39 +120,74 @@ namespace Phys2D
             //m_angular_velocity += m_force * (delta);
         }
 
-        public double GetRightX()
+        public double GetWCSRightX()
         {
             return m_position.X + m_width;
         }
 
-        public double GetLeftX()
+        public double GetRightX()
+        {
+            return m_width;
+        }
+
+        public double GetWCSLeftX()
         {
             return m_position.X;
         }
 
+        public double GetLeftX()
+        {
+            return 0.0;
+        }
+
         public double GetCenterX()
         {
-            return m_position.X+(m_width/2.0);
+            return m_width/2.0;
         }
 
         public double GetCenterY()
         {
-            return m_position.Y + (m_height / 2.0);
+            return m_height / 2.0;
+        }
+
+        public double GetWCSCenterX()
+        {
+            return m_position.X + m_width / 2.0;
+        }
+
+        public double GetWCSCenterY()
+        {
+            return m_position.Y + m_height / 2.0;
         }
 
         public double GetTopY()
         {
-            return m_position.Y;
+            return 0.0;
         }
 
         public double GetBotY()
         {
-            return m_position.Y + (m_height);
+            return m_height;
+        }
+
+        public double GetWCSTopY()
+        {
+            return m_position.Y;
+        }
+
+        public double GetWCSBotY()
+        {
+            return m_position.Y+m_height;
         }
 
         public Vector2 GetCenter()
         {
-            return new Vector2((float)(m_position.X + (m_width / 2.0)), (float)(m_position.Y + (m_height / 2.0)));
+            return new Vector2((float)m_width / 2.0f, (float)m_height / 2.0f);
+        }
+
+        public Vector2 GetWCSCenter()
+        {
+            return new Vector2(m_position.X + (float)(m_width / 2.0f), m_position.Y + (float)(m_height / 2.0f));
         }
     }
 }

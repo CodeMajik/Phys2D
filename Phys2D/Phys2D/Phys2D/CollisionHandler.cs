@@ -36,7 +36,7 @@ namespace Phys2D
                 {
                     a = entites.ElementAt(i);
                     b = entites.ElementAt(j);
-                    if (a!=b && CollisionFunctions.CubeOverlapping(ref a, ref b))
+                    if (a!=b && (!a.m_bPlayerControlled&&!b.m_bPlayerControlled) && CollisionFunctions.CubeOverlapping(ref a, ref b))
                     {
                         //compile list of forces to add to velocity
                         Vector2 force = CollisionFunctions.GetCollisionDirection(ref a, ref b);

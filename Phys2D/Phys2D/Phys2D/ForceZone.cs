@@ -59,7 +59,14 @@ namespace Phys2D
                 {
                     foreach (Force f in m_forces)
                     {
-                        e.m_zoneForces += f.m_data;
+                        if (f.m_name != "Whirlwind")
+                            e.m_zoneForces += f.m_data;
+                        else
+                        {
+                            Vector2 dir = (e.GetWCSCenter()-GetWCSCenter() )/3.0f;
+ 
+                            e.m_zoneForces += -(f.m_data*dir);
+                        }
                     }
                 }
             }
@@ -70,14 +77,34 @@ namespace Phys2D
             sb.Draw(m_texture, m_rect, Color.White);
         }
 
-        public double GetCenterX()
+        public float GetCenterX()
         {
-            return m_topLeft.X + (m_width / 2.0);
+            return (float)(m_width / 2.0);
         }
 
-        public double GetCenterY()
+        public float GetCenterY()
         {
-            return m_topLeft.Y - (m_height / 2.0);
+            return (float)(m_height / 2.0);
+        }
+
+        public Vector2 GetCenter()
+        {
+            return new Vector2(GetCenterX(), GetCenterY());
+        }
+
+        public Vector2 GetWCSCenter()
+        {
+            return new Vector2(GetWCSCenterX(), GetWCSCenterY());
+        }
+
+        public float GetWCSCenterX()
+        {
+            return (float)(m_topLeft.X + (m_width / 2.0));
+        }
+
+        public float GetWCSCenterY()
+        {
+            return (float)(m_topLeft.Y - (m_height / 2.0));
         }
     }
 }

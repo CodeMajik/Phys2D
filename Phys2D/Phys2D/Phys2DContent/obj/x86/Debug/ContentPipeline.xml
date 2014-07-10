@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\cube.xnb</Output>
-      <Time>2014-07-07T14:28:20.8178496+01:00</Time>
+      <Time>2014-07-10T09:46:23.8501679+01:00</Time>
     </Item>
     <Item>
       <Source>zone_def.png</Source>
@@ -17,7 +17,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\zone_def.xnb</Output>
-      <Time>2014-07-09T17:23:52.2896684+01:00</Time>
+      <Time>2014-07-10T09:46:23.8591684+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sphere.png</Source>
+      <Name>sphere</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\sphere.xnb</Output>
+      <Time>2014-07-10T11:30:34.8267033+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

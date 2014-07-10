@@ -36,3 +36,4 @@ C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.c
 C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.exe
 C:\Users\Jim\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\obj\x86\Debug\Phys2D.pdb
+C:\Users\johnogorman\Documents\GitHub\Phys2D\Phys2D\Phys2D\Phys2D\bin\x86\Debug\Content\sphere.xnb

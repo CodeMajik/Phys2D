@@ -22,7 +22,6 @@ namespace Phys2D
         ControllableEntity m_player;
         KeyboardState oldState, newState;
         ZoneManager m_zoneMgr;
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -55,22 +54,26 @@ namespace Phys2D
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            Texture2D tex = Content.Load<Texture2D>("cube");
+            Texture2D tex = Content.Load<Texture2D>("sphere");
+
+            Texture2D ctex = Content.Load<Texture2D>("cube");
+
+            m_manager = EntityManager.GetInitInstance(ref ctex);
+            m_manager.floorY = (double)graphics.PreferredBackBufferHeight;
+            m_manager.screenRight = (double)graphics.PreferredBackBufferWidth;
+            m_manager.Populate();
 
             oldState = new KeyboardState();
 
             m_zoneMgr = ZoneManager.GetInstance();
             m_zoneMgr.AddZone(new ForceZone(new Vector2(0.0f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
-            m_zoneMgr.m_zones.ElementAt(0).AddForce(new Force("Wind", new Vector2(0.0f, -19.0f)));
+            m_zoneMgr.m_zones.ElementAt(0).AddForce(new Force("Wind", new Vector2(0.0f, -20.0f)));
             m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 2.9f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
-            m_zoneMgr.m_zones.ElementAt(1).AddForce(new Force("Wind", new Vector2(0.0f, -15.0f)));
+            m_zoneMgr.m_zones.ElementAt(1).AddForce(new Force("Wind", new Vector2(0.0f, -20.0f)));
             m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 1.45f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
-            m_zoneMgr.m_zones.ElementAt(2).AddForce(new Force("Wind", new Vector2(0.0f, -19.0f)));
+            m_zoneMgr.m_zones.ElementAt(1).AddForce(new Force("Wind", new Vector2(0.0f, -20.0f)));
 
-            m_manager = EntityManager.GetInitInstance(ref tex);
-            m_manager.floorY = (double)graphics.PreferredBackBufferHeight;
-            m_manager.screenRight = (double)graphics.PreferredBackBufferWidth;
-
+           
             m_player = new ControllableEntity();
             m_player.m_entity.SetTexture(ref tex);
             m_player.m_entity.m_force.Y = WorldForces.Gravity.Y;
@@ -105,22 +108,26 @@ namespace Phys2D
                 this.Exit();
 
             if (KeyReleased(Keys.Space))
-                m_player.m_impulseForce.Y = -10.0f;
+                m_player.m_entity.m_impulseForce.Y = -10.0f;
 
             if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                if (m_player.m_impulseForce.X < 3.0f)
-                    m_player.m_impulseForce.X += 0.08f;
+                if (m_player.m_entity.m_impulseForce.X < 3.0f)
+                    m_player.m_entity.m_impulseForce.X += 0.08f;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                if (m_player.m_impulseForce.X > -3.0f)
-                    m_player.m_impulseForce.X = -0.08f;
+                if (m_player.m_entity.m_impulseForce.X > -3.0f)
+                    m_player.m_entity.m_impulseForce.X = -0.08f;
             }
+
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            // TODO: Add your game logic here.
 
             m_zoneMgr.Update();
             m_player.Update(gameTime);
-          //  m_manager.Update(ref gameTime);
+            m_manager.Update(ref gameTime);
             // TODO: Add your update logic here
 
             oldState = newState;
@@ -135,7 +142,7 @@ namespace Phys2D
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            //m_manager.Draw(ref spriteBatch);
+            m_manager.Draw(ref spriteBatch);
             Rectangle rect = new Rectangle();
             int width, height;
             width = (int)m_player.m_entity.m_width;
@@ -144,7 +151,8 @@ namespace Phys2D
             rect.Y = (int)m_player.m_entity.m_position.Y;
             rect.Width = width;
             rect.Height = height;
-            spriteBatch.Draw(m_player.m_entity.m_texture, rect, Color.White);
+            spriteBatch.Draw(m_player.m_entity.m_texture, m_player.m_entity.GetWCSCenter(), null, Color.White, m_player.m_entity.m_angular_momentum.Length(),
+                 new Vector2((float)m_player.m_entity.GetCenterX(), (float)m_player.m_entity.GetCenterY()), 1.0f, SpriteEffects.None, 0f); 
             m_zoneMgr.Draw(ref spriteBatch);
             spriteBatch.End();
             // TODO: Add your drawing code here

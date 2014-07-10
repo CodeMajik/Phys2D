@@ -36,12 +36,14 @@ namespace Phys2D
 
             Vector2 vel = entity.m_velocity;
             accel /= (float)entity.m_mass;
-            vel += (accel*delta);// new Vector2(vel.X + (accel.X * delta), vel.Y + (accel.Y * delta));
+            vel += (accel*delta);
 
             accel = new Vector2((accel.X * delta) / 2.0f, (accel.Y * delta) / 2.0f);//0.5 at squared
             
             entity.m_position += vel + accel;
             entity.m_velocity = vel;
+
+            entity.m_angular_momentum += (vel * delta);//nope
         }
 
         public void CalculateVerletMotion(ref Vector2 pos, ref Vector2 vel)
