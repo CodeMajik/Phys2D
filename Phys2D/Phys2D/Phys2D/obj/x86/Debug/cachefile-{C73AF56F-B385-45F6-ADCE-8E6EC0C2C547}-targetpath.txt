@@ -1,3 +1,4 @@
 Content\cube.xnb
 Content\zone_def.xnb
 Content\sphere.xnb
+Content\aabb.xnb

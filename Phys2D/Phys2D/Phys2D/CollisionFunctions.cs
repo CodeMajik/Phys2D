@@ -24,6 +24,12 @@ namespace Phys2D
                 && (a.GetWCSCenterY() > b.m_topLeft.Y && a.GetWCSCenterY() < (b.m_topLeft.Y + b.m_height));
         }
 
+        public static bool AABBIntersection(ref AxisAlignedBoundingBox a, ref AxisAlignedBoundingBox b)
+        {
+            return ((a.m_right >= b.m_left) && (a.m_right <= b.m_right))
+                && ((a.m_top >= b.m_bottom) && (a.m_top <= b.m_top));
+        }
+
         public static bool EntitiesWithinDistance(ref Entity a, ref Entity b, double distance)
         {
             return Vector2.Distance(a.GetCenter(), b.GetCenter()) <= distance;

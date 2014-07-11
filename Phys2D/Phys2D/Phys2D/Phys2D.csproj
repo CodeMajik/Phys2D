@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2DMotionHandler.cs" />
+    <Compile Include="AABBManager.cs" />
+    <Compile Include="AxisAlignedBoundingBox.cs" />
     <Compile Include="BroadPhase.cs" />
     <Compile Include="CollisionFunctions.cs" />
     <Compile Include="CollisionHandler.cs" />

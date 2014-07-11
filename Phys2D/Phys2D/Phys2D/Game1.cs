@@ -22,6 +22,7 @@ namespace Phys2D
         ControllableEntity m_player;
         KeyboardState oldState, newState;
         ZoneManager m_zoneMgr;
+        AABBManager m_aabbMgr;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -55,8 +56,11 @@ namespace Phys2D
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Texture2D tex = Content.Load<Texture2D>("sphere");
-
             Texture2D ctex = Content.Load<Texture2D>("cube");
+            Texture2D aabbTex = Content.Load<Texture2D>("aabb");
+
+            m_aabbMgr = AABBManager.GetInstance();
+            m_aabbMgr.SetTexture(ref aabbTex);
 
             m_manager = EntityManager.GetInitInstance(ref ctex);
             m_manager.floorY = (double)graphics.PreferredBackBufferHeight;
@@ -71,8 +75,9 @@ namespace Phys2D
             m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 2.9f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
             m_zoneMgr.m_zones.ElementAt(1).AddForce(new Force("Wind", new Vector2(0.0f, -20.0f)));
             m_zoneMgr.AddZone(new ForceZone(new Vector2(graphics.PreferredBackBufferWidth / 1.45f, graphics.PreferredBackBufferHeight / 3.0f), Content.Load<Texture2D>("zone_def")));
-            m_zoneMgr.m_zones.ElementAt(1).AddForce(new Force("Wind", new Vector2(0.0f, -20.0f)));
+            m_zoneMgr.m_zones.ElementAt(2).AddForce(new Force("Wind", new Vector2(0.0f, -20.0f)));
 
+           
            
             m_player = new ControllableEntity();
             m_player.m_entity.SetTexture(ref tex);
@@ -128,6 +133,7 @@ namespace Phys2D
             m_zoneMgr.Update();
             m_player.Update(gameTime);
             m_manager.Update(ref gameTime);
+            m_aabbMgr.Update();
             // TODO: Add your update logic here
 
             oldState = newState;
@@ -154,6 +160,7 @@ namespace Phys2D
             spriteBatch.Draw(m_player.m_entity.m_texture, m_player.m_entity.GetWCSCenter(), null, Color.White, m_player.m_entity.m_angular_momentum.Length(),
                  new Vector2((float)m_player.m_entity.GetCenterX(), (float)m_player.m_entity.GetCenterY()), 1.0f, SpriteEffects.None, 0f); 
             m_zoneMgr.Draw(ref spriteBatch);
+            m_aabbMgr.Draw(ref spriteBatch);
             spriteBatch.End();
             // TODO: Add your drawing code here
            

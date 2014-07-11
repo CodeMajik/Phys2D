@@ -15,12 +15,10 @@ namespace Phys2D
     {
         public _2DMotionHandler m_motionHandler;
         public CollisionHandler m_collisionHandler;
-
+        public AABBManager aabbMgr;
         public List<Entity> m_entities;
         public Texture2D m_defCubetexture;
-
         public double floorY, screenRight, screenLeft=0.0;
-
         public static EntityManager m_instance=null;
 
         public static EntityManager GetInstance()
@@ -79,12 +77,14 @@ namespace Phys2D
             m_entities = new List<Entity>(0);
             m_motionHandler = _2DMotionHandler.GetInstance();
             m_collisionHandler = CollisionHandler.GetInstance();
+            aabbMgr = AABBManager.GetInstance();
         }
 
         public void AddEntity(Entity e)
         {
             e.SetTexture(ref m_defCubetexture);
             e.m_force.Y = WorldForces.Gravity.Y;
+            aabbMgr.AddAABB(ref e);
             m_entities.Add(e);
         }
 
