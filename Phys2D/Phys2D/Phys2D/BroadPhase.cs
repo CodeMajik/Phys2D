@@ -43,7 +43,7 @@ namespace Phys2D
             }
         }
 
-        public void RunSAT()
+        public void RunSweepAndPrune()
         {
            /*
             * - compare entities against eachother on x axis
